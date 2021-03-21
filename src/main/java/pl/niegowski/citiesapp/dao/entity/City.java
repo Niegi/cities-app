@@ -1,17 +1,24 @@
-package pl.niegowski.citiesapp;
+package pl.niegowski.citiesapp.dao.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 public class City {
 
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long id;
     private String name;
     private LocalDate yearOfEstablishment;
 
     public City() {
     }
 
-    public City(int id, String name, LocalDate yearOfEstablishment) {
+    public City(Long id, String name, LocalDate yearOfEstablishment) {
         this.id = id;
         this.name = name;
         this.yearOfEstablishment = yearOfEstablishment;
@@ -25,11 +32,11 @@ public class City {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
