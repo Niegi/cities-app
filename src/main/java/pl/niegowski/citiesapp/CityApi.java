@@ -1,10 +1,12 @@
 package pl.niegowski.citiesapp;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/cities")
 public class CityApi {
@@ -32,7 +34,12 @@ public class CityApi {
 
     @PostMapping
     public boolean addCity(@RequestBody City city) {
-        return cities.add(city);
+        if (cities.add(city)){
+            log.info("City {} added successfully", city.getName());
+            return true;
+        }
+        log.warn("Provided city can't be added");
+        return false;
     }
 
     @PutMapping
@@ -42,6 +49,11 @@ public class CityApi {
 
     @DeleteMapping
     public boolean deleteCity(@RequestParam int index) {
-        return cities.removeIf(element -> element.getId() == index);
+        if (cities.removeIf(element -> element.getId() == index)) {
+            log.info("City with index {} deleted successfully", index);
+            return true;
+        }
+        log.warn("Provided index can't be deleted");
+        return false;
     }
 }
