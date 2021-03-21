@@ -1,0 +1,1 @@
+Cities-app project was created to learn to deploy the app on the web with different environments configured
