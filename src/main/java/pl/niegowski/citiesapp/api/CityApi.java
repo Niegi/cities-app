@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.niegowski.citiesapp.dao.entity.City;
 import pl.niegowski.citiesapp.manager.CityManager;
 
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j
